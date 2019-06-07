@@ -1,0 +1,65 @@
+{% extends 'mysite/base.html' %}
+
+
+
+
+{% block content %}
+
+    <div class="post-pos">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% for post in posts %}
+
+            <article class="media-content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+
+                        <img src="{{ post.author.profile.image.url }}" alt="Ashish" class="small-icon">
+                        <a class="mr-2" href="{% url 'user-post' post.author_id %}" id="author-id">{{ post.author }}</a>
+
+                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                    </div>
+                    <h3 class="article-title"><a class="link"
+                                                 href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+                    <p class="article-content">{{ post.content|safe|truncatewords:30 }}</p>
+                    <a class="btn btn-primary ml-4 " href="{% url 'post-detail' post.id %}">Read Full</a>
+
+                </div>
+
+            </article>
+        {% empty %}
+            <h3>Sorry no results have been found for '{{ request.GET.q }}'</h3>
+
+        {% endfor %}
+    </div>
+
+
+    {% if posts.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Prev</a>
+
+    {% endif %}
+    {% for num in posts.paginator.page_range %}
+        {% if posts.number == num %}
+            <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+
+        {% elif num > posts.number|add:'-2' and num < posts.number|add:'2' %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+
+
+        {% endif %}
+    {% endfor %}
+    {% if posts.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Last</a>
+
+    {% endif %}
+
+
+
+{% endblock %}

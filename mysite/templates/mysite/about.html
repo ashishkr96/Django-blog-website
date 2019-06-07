@@ -1,0 +1,20 @@
+{% extends 'mysite/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class='post-create'>
+        <form action="{% url 'blog-about' %}" method="post" autocomplete="off" enctype="multipart/form-data">
+            <feildset class='form-group'>
+                <legend class="border-bottom mb-5">Tell about yourself {{ user.first_name }}</legend>
+
+                {% csrf_token %}
+                {{ form|crispy }}
+
+
+            </feildset>
+            <div class="form-group  mt-4">
+
+                <button class="btn btn-outline-info" type="submit" value="Submit">Post</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

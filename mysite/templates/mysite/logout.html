@@ -1,0 +1,13 @@
+{% extends 'mysite/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class='login-section'>
+        <form method="post">
+            <feildset class='form-group'>
+                <legend class="border-bottom mb-4">You are sucessfully logged out !</legend>
+            </feildset>
+            <small class="text-muted"><a href="{% url 'Login' %}"> Log In Again </a></small>
+
+        </form>
+    </div>
+{% endblock %}

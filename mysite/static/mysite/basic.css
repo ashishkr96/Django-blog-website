@@ -1,0 +1,514 @@
+.post-pos {
+    position: relative;
+    width: 900px;
+    margin-top: 70px;
+    padding-left: 10%;
+
+
+}
+
+.sidenav {
+    position: static;
+    float: left;
+    width: 160px;
+    transform: translate(1100px, 70px);
+    z-index: 2;
+    top: 20px;
+    left: 10px;
+    background: whitesmoke;
+    overflow-x: hidden;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 2%;
+}
+
+.spacingbw {
+    border-bottom: 2px solid lavender;
+    padding: 10px;
+}
+
+.heading {
+    border-bottom: 2px solid black;
+    padding-bottom: 9px;
+    padding-left: 3px;
+    font-size: 12pt;
+    font-style: inherit;
+}
+
+.author-heading {
+    color: lavender;
+    background-color: black;
+
+}
+
+.small-icon {
+    border-radius: 50%;
+    height: 30px;
+
+}
+
+#author-id {
+    padding-left: 10px;
+}
+
+.post-create {
+    width: 900px;
+    border: 1px solid lavender;
+    background: lavender;
+    margin: 70px;
+    padding: 20px;
+    border-radius: 2%;
+
+}
+
+
+.navbar-brand {
+    font-family: Satisfy, serif;
+    font-style: italic;
+    letter-spacing: -1px;
+    text-shadow: 3px 3px 7px powderblue;
+    font-size: 1.4em;
+
+
+}
+
+small.text-muted {
+    padding-left: 60%;
+}
+
+.login-section {
+    border: 1px solid aliceblue;
+    background-color: lightgrey;
+    margin-left: 4in;
+    margin-right: 30%;
+    margin-top: 20px;
+    padding: 10px 10px;
+    border-radius: 20px
+}
+
+
+body {
+    background-color: white;
+    font-family: sans-serif;
+    background: url("50613512_116124502843721_8486503660090272122_n.jpg") no-repeat fixed;
+    background-size: 1350px;
+
+
+}
+
+
+.article-metadata {
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid lavender;
+
+
+}
+
+
+.article-title {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.7em;
+
+
+}
+
+
+a.link {
+    color: black;
+}
+
+a.link:hover {
+    color: dodgerblue;
+}
+
+.article-content {
+
+    font-family: 'ABeeZee', sans-serif;
+    text-align: justify;
+    padding: 30px;
+}
+
+
+.typeof {
+    height: 120px;
+
+
+    transform: translate(1220px, 100px);
+    border-radius: 10%;
+
+
+}
+
+div.fixing {
+
+    width: 100%;
+}
+
+.media-body {
+    border: 2px solid black;
+
+
+    background: whitesmoke;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    
+}
+
+
+.updateorm {
+    background: lavender;
+    width: 600px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+
+
+}
+
+.user-img {
+    height: 30px;
+    width: 30px;
+    float: left;
+    padding-right: 2px;
+}
+
+.comment-image {
+    margin-top: 10px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: 1px solid cornflowerblue;
+    margin-left: 20px;
+}
+
+.comment-user {
+    padding-left: 2px;
+    padding-top: 5px;
+    font-size: 9pt;
+    margin-right: 10px;
+}
+
+.actual-comment {
+    float: top;
+    margin-left: 100px;
+    padding-top: 5px;
+    font-size: 14pt;
+
+}
+
+.reply-field {
+    margin-left: 50px;
+    width: 400px;
+}
+
+.reply-view {
+    margin-left: 8%;
+
+
+}
+
+.actual-reply {
+    font-size: 12pt;
+}
+
+.reply-all {
+    display: none;
+}
+
+.images {
+    height: 200px;
+    width: 200px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    display: inline;
+
+}
+
+.about-section {
+    background-color: black;
+    border-radius: 20px;
+    height: 280px;
+    width: 750px;
+    margin: 10px;
+    position: relative;
+    color: whitesmoke;
+    padding: 10px;
+    border: 1px solid cornflowerblue;
+}
+
+
+.about-image {
+    border: 3px solid whitesmoke;
+    height: 120px;
+    width: 120px;
+}
+
+.about-desc {
+    float: right;
+    position: absolute;
+
+    padding: 10px;
+    font-family: "Lucida Calligraphy",sans-serif;
+    color: cornflowerblue;
+}
+@media only screen and (max-width: 768px) {
+    .post-pos {
+        position: relative;
+        width: auto;
+        margin-top: 20px;
+        padding-left: 10%;
+
+
+    }
+
+    .sidenav {
+        display: none;
+    }
+
+    .spacingbw {
+        border-bottom: 2px solid lavender;
+        padding: 10px;
+    }
+
+    .heading {
+        border-bottom: 2px solid black;
+        padding-bottom: 9px;
+        padding-left: 3px;
+        font-size: 12pt;
+        font-style: inherit;
+    }
+
+    .author-heading {
+        color: lavender;
+        background-color: black;
+
+    }
+
+    .small-icon {
+        border-radius: 50%;
+        height: 30px;
+
+    }
+
+    #author-id {
+        padding-left: 5px;
+    }
+
+    .post-create {
+        width: 350px;
+        border: 1px solid lavender;
+        background: lavender;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 2%;
+        height: 50px;
+    }
+
+
+    .navbar-brand {
+        font-family: Satisfy, serif;
+        font-style: italic;
+        letter-spacing: -1px;
+        text-shadow: 3px 3px 7px powderblue;
+        font-size: 1.4em;
+
+
+    }
+
+    small.text-muted {
+        padding-left: 60%;
+    }
+
+    .login-section {
+        border: 1px solid aliceblue;
+        background-color: lightgrey;
+        margin-left: 10px;
+        margin-top: 10px;
+        width: auto;
+        padding: 10px 10px;
+        border-radius: 20px;
+
+
+    }
+
+
+    body {
+        background-color: white;
+        font-family: sans-serif;
+        background: url("50613512_116124502843721_8486503660090272122_n.jpg") no-repeat fixed;
+
+
+    }
+
+
+    .article-metadata {
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid lavender;
+
+
+    }
+
+
+    .article-title {
+        text-align: center;
+        padding: 15px;
+        font-size: 1.7em;
+
+
+    }
+
+
+    a.link {
+        color: black;
+    }
+
+    a.link:hover {
+        color: dodgerblue;
+    }
+
+    .article-content {
+
+        font-family: 'ABeeZee', sans-serif;
+        text-align: justify;
+        padding: 10px;
+    }
+
+
+    .typeof {
+        height: 50px;
+
+
+        transform: translate(300px, 50px);
+        border-radius: 10%;
+
+
+    }
+
+    div.fixing {
+
+        width: 100%;
+    }
+
+    .media-body {
+        border: 2px solid black;
+        margin-left: -35px;
+
+
+        background: whitesmoke;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        width: auto;
+    }
+
+
+    .updateorm {
+        background: lavender;
+        width:auto;
+        border: 2px solid whitesmoke;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px;
+
+
+    }
+
+    .user-img {
+        height: 30px;
+        width: 30px;
+        float: left;
+        padding-right: 2px;
+    }
+
+    .comment-image {
+        margin-top: 10px;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        border: 1px solid cornflowerblue;
+        margin-left: 20px;
+    }
+
+    .comment-user {
+        padding-left: 2px;
+        padding-top: 5px;
+        font-size: 9pt;
+        margin-right: 10px;
+    }
+
+    .actual-comment {
+        float: top;
+        margin-left: 100px;
+        padding-top: 5px;
+        font-size: 14pt;
+
+    }
+
+    .reply-field {
+        margin-left: 50px;
+        width: 200px;
+    }
+
+    .reply-view {
+        margin-left: 8%;
+
+
+    }
+
+    .actual-reply {
+        font-size: 12pt;
+    }
+
+    .reply-all {
+        display: none;
+    }
+
+    .images {
+        height: 150px;
+        width: 150px;
+        padding: 5px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 3px;
+        display: inline;
+
+    }
+
+    .about-section {
+        background-color: black;
+        border-radius: 20px;
+        width: 320px;
+        margin-left: 4px;
+        position: relative;
+        color: whitesmoke;
+        padding: 10px;
+        border: 1px solid cornflowerblue;
+    }
+
+
+    .about-image {
+        border: 3px solid whitesmoke;
+        height: 70px;
+        width:70px;
+    }
+
+    .about-desc {
+        float: right;
+        position: absolute;
+
+        padding: 10px;
+        font-family: "Lucida Calligraphy", sans-serif;
+        color: cornflowerblue;
+
+
+    }
+}

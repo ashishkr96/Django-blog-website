@@ -1,0 +1,23 @@
+{% extends 'mysite/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class='post-create'>
+        {% if user.is_superuser %}
+            <form action="{% url 'post-create' %}" method="post" autocomplete="off" enctype="multipart/form-data">
+                <feildset class='form-group'>
+                    <legend class="border-bottom mb-5">What's on your mind {{ user.first_name }}</legend>
+
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    {{ iform|crispy }}
+
+
+                </feildset>
+                <div class="form-group  mt-4">
+
+                    <button class="btn btn-outline-info" type="submit" value="Submit">Post</button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

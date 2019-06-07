@@ -1,0 +1,38 @@
+{% extends 'mysite/base.html' %}
+
+
+
+
+{% block content %}
+
+    <div class="post-pos">
+
+        <h4 class="author-heading">{{ posts.first.author }} has {{ posts.count }} Post{{ posts.count|pluralize }}</h4>
+        <div class="mt-2 about-section">
+            <h4>Here is something about {{ posts.first.author }}</h4>
+            <img src="{{ posts.first.author.profile.image.url }}" class="about-image">
+
+            <h6 class="about-desc"> {{ abouts.about|safe }}</h6>
+        </div>
+        {% for post in posts %}
+
+            <article class="media-content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+
+                        <img src="{{ post.author.profile.image.url }}" alt="Ashish" class="small-icon">
+                        <a class="mr-2" href="{% url 'user-post' post.author_id %}" id="author-id">{{ post.author }}</a>
+
+                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                    </div>
+                    <h3 class="article-title"><a class="link"
+                                                 href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+                    <p class="article-content">{{ post.content|safe|truncatewords:30 }}</p>
+                    <a class="btn btn-primary ml-4 " href="{% url 'post-detail' post.id %}">Read Full</a>
+
+                </div>
+
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

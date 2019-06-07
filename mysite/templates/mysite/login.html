@@ -1,0 +1,31 @@
+{% extends 'mysite/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class='login-section'>
+        <form method="post">
+            <feildset class='form-group'>
+                <legend class="border-bottom mb-4">Log In(Sign up with google for creating account)</legend>
+                {% csrf_token %}
+                {{ form|crispy }}
+            </feildset>
+            <div class="form-group  mt-4">
+
+                <button class="btn btn-outline-info" type="submit">Log In</button>
+            </div>
+
+            </a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}" >
+                Sign Up using <button class="fab fa-google ml-2  btn btn-danger  " id="google" type="button" name="button">oogle
+                </button>
+            </a>
+        </form>
+    </div>
+{% endblock %}

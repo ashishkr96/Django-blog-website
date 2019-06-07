@@ -1,0 +1,184 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'mysite/basic.css' %}">
+    {% if title %}
+        <title>Blog-{{ title }}</title>
+    {% else %}
+        <title>Blog- Page</title>
+    {% endif %}
+</head>
+<body>
+
+<div class="fixing">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'blog-home' %}">Blue-Sky-Thinker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <form class="form-inline" action="{% url 'blog-home' %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Post Here" aria-label="Search"
+                   name='q'>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            
+            <ul class="navbar-nav mx-auto">
+                 <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'blog-home' %}">Home </a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Logout' %}">Log-out</a>
+                    </li>
+                    {% if user.has_usable_password %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'password_change' %}">Change-password</a>
+                        </li>
+
+                    {% else %}
+                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'password_new_set' %}">Set password</a>
+                        </li>
+
+                    {% endif %}
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'post-draft' %}">My drafts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'post-create' %}">Create-Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blog-about' %}">About-me</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog-profile' %}">Update-Profile</a>
+                    </li>
+                    
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Login' %}">Log-In</a>
+                    </li>
+
+                {% endif %}
+
+                
+
+
+            </ul>
+            
+
+        </div>
+    </nav>
+    {% if user.is_authenticated %}
+        <div class="sidenav">
+            <div class="Heading">
+                <img class="user-img" src="{{ user.profile.image.url }}">
+                <p class="heading ">Hi {{ user.first_name }} </p>
+            </div>
+
+            <div class="spacingbw">
+                <a href="{% url 'blog-home' %}">Latest Post</a>
+            </div>
+        {% if user.is_superuser %}
+            <div class="spacingbw">
+                <a href="{% url 'post-draft' %}">Drafts</a>
+            </div>
+            <div class="spacingbw">
+                <a href="{% url 'blog-about' %}">About me</a>
+            </div>
+            <div class="spacingbw">
+                <a href="{% url 'post-create' %}">Create Post</a>
+            </div>
+        {% endif %}
+
+
+            {% if user.has_usable_password %}
+                <div class="spacingbw">
+                    <a href="{% url 'password_change' %}">Change Password</a>
+                </div>
+
+            {% else %}
+                <div class="spacingbw">
+                    <a href="{% url 'password_new_set' %}" style="background-color: yellow">Set New Password</a>
+                </div>
+
+            {% endif %}
+
+            
+            <div class="spacingbw">
+                <a href="{% url 'Logout' %}">Log Out</a>
+            </div>
+            
+            <div class="spacingbw">
+                <a href="{% url 'blog-profile' %}">Profile Update!</a>
+            </div>
+        </div>
+
+
+    {% else %}
+        <div class="sidenav">
+            <div class="Heading">
+                <h5 class="heading">What's Up </h5>
+            </div>
+            <div class="spacingbw">
+                <a href="{% url 'blog-home' %}">Latest Post</a>
+            </div>
+
+
+            <div class="spacingbw">
+                <a href="{% url 'Login' %}">Log In</a>
+            </div>
+
+        </div>
+
+    {% endif %}
+
+
+</div>
+
+
+
+
+
+{% block content %}
+{% endblock %}
+
+
+
+
+
+
+<!-- Optional JavaScript -->
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static "js/tiny_mce/tiny_mce.js" %}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static 'mysite/dom.js' %}"></script>
+
+</body>
+</html>

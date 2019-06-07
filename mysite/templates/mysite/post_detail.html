@@ -1,0 +1,154 @@
+{% extends 'mysite/base.html' %}
+
+
+
+
+{% block content %}
+
+    <div class="post-pos">
+
+
+        <article class="media-content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+
+                    <img src="{{ post.author.profile.image.url }}" alt="Ashish" class="small-icon">
+                    <a class="mr-2" href="#" id="author-id">{{ post.author }}</a>
+
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
+                {% if user.is_authenticated %}
+                    <div>
+                        <h3 class="article-title">{{ post.title }}</h3>
+                        {% if user.username == post.author.username %}
+                            <a class="btn btn-outline-danger" href="{% url 'post-delete' post.id %}">Delete</a>
+
+                        {% endif %}
+                        <div class="gallery">
+                            {% for i in post.images_set.all %}
+
+                                <img class="images img-thumbnail" src="{{ i.pic.url }}" alt='Image not found'>
+
+                            {% endfor %}
+                        </div>
+
+                        <p class="article-content">{{ post.content|safe }}</p>
+
+                        <p class="text-muted ml-4 pt-3">  {{ total_likes }} Like{{ total_likes|pluralize }}</p>
+                        <form method="post" action="{% url 'likes' %}">
+                            {% csrf_token %}
+                            {% if is_liked %}
+                                <button class="btn btn-primary ml-4" type="submit" name="like"
+                                        value="{{ post.id }}">
+                                    Dislike
+                                </button>
+
+                            {% else %}
+                                <button class="btn btn-outline-info ml-4" type="submit" name="like"
+                                        value="{{ post.id }}">
+                                    Like
+                                </button>
+
+                            {% endif %}
+
+                        </form>
+                    </div>
+                {% else %}
+                    <h3 class="article-title">{{ object.title }}</h3>
+                    <p class="article-content">{{ object.content|safe }}</p>
+
+                    <form method="post" action="{% url 'likes' %}">
+                        {% csrf_token %}
+                        <button class="btn btn-primary" type="submit" name="like" value="{{ object.id }}">Like
+                        </button>
+                    </form>
+
+
+
+                {% endif %}
+                <form method="post" class="mr-5 ml-4 mt-2">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if user.is_authenticated %}
+                        <button class="btn btn-info" type="submit">Comment</button>
+
+                    {% endif %}
+                </form>
+                <p class="ml-2 pt-2"> {{ comment.count }} Comment{{ comment|pluralize }}</p>
+                {% for comments in comment %}
+
+                    <div class="comments-view">
+
+                        <img class="comment-image" src="{{ comments.user.profile.image.url }}"
+                             alt="{{ comments.user.username }}">
+
+                        <small class="comment-user"><b>{{ comments.user.username }} : </b></small>
+
+                        <div class="just-check">
+                            <p class="actual-comment ml-4">{{ comments }}</p>
+
+                        </div>
+                        {% if user.is_authenticated and user.username == comments.user.username or user.username == post.author.username %}
+                             <form action="{% url 'comment-delete' comments.id %}" method="post">
+                                 {% csrf_token %}
+                                <button type="submit" class="btn-sm btn-danger m-3">Delete
+                                </button>
+                                <input type="hidden" value="{{ post.id }}" name="pid">
+                            </form>
+                        {% endif %}
+
+
+                    </div>
+                    <div class="p-2">
+                        <button class="ml-3 btn btn-outline-dark btn-sm reply-but" id='reply-btn'>
+                            Show
+                            replies
+                        </button>
+                    </div>
+                    <div class='demo' style="display: none">
+                        {% for reply in comments.replies.all %}
+                            <div class="reply-view" id='reply-view'>
+
+                                <img class="comment-image" src="{{ reply.user.profile.image.url }}"
+                                     alt="{{ reply.user.username }}">
+
+                                <small class="comment-user"><b>{{ reply.user.username }} : </b></small>
+
+                                <div class="just-check">
+                                    {% if user.is_authenticated and user.username == reply.user.username or user.username == post.author.username %}
+                                        <a name="pid" class="btn btn-danger m-3"
+                                           href="{% url 'comment-delete' reply.id %} ">delete
+                                        </a>
+                                        <input type="hidden" value="{{reply.post.id}}" name="value">
+                                        <p class="actual-reply ml-4">{{ reply }}</p>
+                                    {% else %}
+                                        <p class="actual-reply ml-4">{{ reply }}</p>
+                                    {% endif %}
+
+
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+                        <form method="post" class="reply-field">
+                            {% csrf_token %}
+                            <input type="hidden" name="comment_id" value="{{ comments.id }}">
+                            {{ form.as_p }}
+                            {% if user.is_authenticated %}
+                                <button class="btn btn-info" type="submit" value='submit'>Reply
+                                </button>
+
+                            {% endif %}
+                        </form>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+
+
+        </article>
+    </div>
+
+{% endblock %}

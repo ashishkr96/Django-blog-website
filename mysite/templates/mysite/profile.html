@@ -1,0 +1,22 @@
+{% extends 'mysite/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="updateorm">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <feildset class='form-group' id = "testing">
+                <legend class="border-bottom mb-4">Profile Info</legend>
+
+                {{ uform|crispy }}
+                {{ pform|crispy }}
+            </feildset>
+            <div class="form-group  mt-4">
+
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
